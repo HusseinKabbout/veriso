@@ -305,7 +305,7 @@ class ComplexCheck(ComplexCheckBase):
     # Return QgsVectorLayer from a layer name ( as string )
     # (c) Carson Farmer / fTools
     def getVectorLayerByName(self, myName):
-        layermap = QgsMapLayerRegistry.instance().mapLayers()
+        layermap = QgsProject.instance().mapLayers()
         for name, layer in layermap.iteritems():
             if layer.type() == QgsMapLayer.VectorLayer and layer.name() == myName:
                 if layer.isValid():

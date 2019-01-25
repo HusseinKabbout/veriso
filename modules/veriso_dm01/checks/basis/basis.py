@@ -24,30 +24,30 @@ class ComplexCheck(ComplexCheckBase):
     def __init__(self, iface):
         super(ComplexCheck, self).__init__(iface)
         self.iface = iface
-        
-        self.root = QgsProject.instance().layerTreeRoot()        
 
-    def run(self):        
+        self.root = QgsProject.instance().layerTreeRoot()
+
+    def run(self):
         self.settings = QSettings("CatAIS","VeriSO")
         project_id = self.settings.value("project/id")
         epsg = self.settings.value("project/epsg")
-        
+
         locale = QSettings().value('locale/userLocale')[0:2] # Für Multilingual-Legenden.
 
         if not project_id:
-            self.iface.messageBar().pushMessage("Error",  _translate("VeriSO_EE_basis", "project_id not set", None), level=QgsMessageBar.CRITICAL, duration=5)                                
+            self.iface.messageBar().pushMessage("Error",  _translate("VeriSO_EE_basis", "project_id not set", None), level=QgsMessageBar.CRITICAL, duration=5)
             return
 
         QApplication.setOverrideCursor(Qt.WaitCursor)
         try:
             group1 = _translate("VeriSO_EE_basis", "EO Allgemein", None)
-            group1 += " (" + str(project_id) + ")" 
+            group1 += " (" + str(project_id) + ")"
 
             group2 = _translate("VeriSO_EE_basis", "AV Allgemein", None)
-            group2 += " (" + str(project_id) + ")" 
+            group2 += " (" + str(project_id) + ")"
 
             group3 = _translate("VeriSO_EE_basis", "BB Allgemein", None)
-            group3 += " (" + str(project_id) + ")" 
+            group3 += " (" + str(project_id) + ")"
 
 
             layer = {}
@@ -99,7 +99,7 @@ class ComplexCheck(ComplexCheckBase):
 
             layer = {}
             layer["type"] = "postgres"
- 
+
             layer["title"] = _translate("VeriSO_EE_basis","SDR",None)
             layer["readonly"] = True
             layer["featuretype"] = "liegenschaften_selbstrecht"
@@ -111,9 +111,9 @@ class ComplexCheck(ComplexCheckBase):
             vlayer = self.layer_loader.load(layer)
             layer = {}
             layer["type"] = "postgres"
- 
 
- 
+
+
             layer["title"] = _translate("VeriSO_EE_basis","Liegenschaften",None)
             layer["readonly"] = True
             layer["featuretype"] = "liegenschaften_liegenschaft"
@@ -125,7 +125,7 @@ class ComplexCheck(ComplexCheckBase):
             vlayer = self.layer_loader.load(layer)
             layer = {}
             layer["type"] = "postgres"
- 
+
             layer["title"] = _translate("VeriSO_EE_basis","Hilfslinie",None)
             layer["readonly"] = True
             layer["featuretype"] = "liegenschaften_grundstueckpos"
@@ -145,7 +145,7 @@ class ComplexCheck(ComplexCheckBase):
             layer["sql"] = ""
             layer["style"] = "liegenschaften/projliegenschaft.qml"
             vlayer = self.layer_loader.load(layer)
- 
+
 
             layer["title"] = _translate("VeriSO_EE_basis","proj. SDR",None)
             layer["readonly"] = True
@@ -159,10 +159,10 @@ class ComplexCheck(ComplexCheckBase):
 
             layer = {}
             layer["type"] = "postgres"
- 
+
             layer = {}
             layer["type"] = "postgres"
- 
+
             layer["title"] = _translate("VeriSO_EE_basis","proj_Grst-Nr",None)
             layer["readonly"] = True
             layer["featuretype"] = "z_projgs_nr"
@@ -174,7 +174,7 @@ class ComplexCheck(ComplexCheckBase):
             vlayer = self.layer_loader.load(layer)
             layer = {}
             layer["type"] = "postgres"
- 
+
             layer["title"] = _translate("VeriSO_EE_basis","Nr Gs(LS)",None)
             layer["readonly"] = True
             layer["featuretype"] = "z_nr_gs"
@@ -186,7 +186,7 @@ class ComplexCheck(ComplexCheckBase):
             vlayer = self.layer_loader.load(layer)
             layer = {}
             layer["type"] = "postgres"
- 
+
             layer["title"] = _translate("VeriSO_EE_basis","Nr Gs(SDR)",None)
             layer["readonly"] = True
             layer["featuretype"] = "z_nr_gs"
@@ -198,7 +198,7 @@ class ComplexCheck(ComplexCheckBase):
             vlayer = self.layer_loader.load(layer)
             layer = {}
             layer["type"] = "postgres"
- 
+
             layer["title"] = _translate("VeriSO_EE_basis","Nr Gs(LS-Teil)",None)
             layer["readonly"] = True
             layer["featuretype"] = "z_nr_gs"
@@ -208,7 +208,7 @@ class ComplexCheck(ComplexCheckBase):
             layer["sql"] = "(art=0) and (gesamteflaechenmass>0)"
             layer["style"] = "liegenschaften/nr_ls_teil.qml"
             vlayer = self.layer_loader.load(layer)
-            
+
             layer = {}
             layer["type"] = "postgres"
             layer["title"] = _translate("VeriSO_EE_basis","Nr Gs(SDR Teil)",None)
@@ -229,7 +229,7 @@ class ComplexCheck(ComplexCheckBase):
             layer = {}
             layer["type"] = "postgres"
             layer["title"] = _translate("VeriSO_EE_basis","proj. Gebaeude",None)
-            layer["readonly"] = True 
+            layer["readonly"] = True
             layer["featuretype"] = "bodenbedeckung_projboflaeche"
             layer["geom"] = "geometrie"
             layer["key"] = "ogc_fid"
@@ -242,13 +242,13 @@ class ComplexCheck(ComplexCheckBase):
             layer["title"] = _translate("VeriSO_EE_basis","HausnummerPos",None)
             layer["featuretype"] = "v_gebaeudeadressen_hausnummerpos"
             layer["geom"] = "pos"
-            layer["key"] = "ogc_fid"            
+            layer["key"] = "ogc_fid"
             layer["sql"] = ""
             layer["group"] = group3
             layer["style"] = "gebaeudeadressen/hausnummerpos.qml"
             vlayer = self.layer_loader.load(layer)
             layer = {}
-            layer["type"] = "postgres" 
+            layer["type"] = "postgres"
             layer["title"] = _translate("VeriSO_EE_basis","Bodenbedeckung",None)
             layer["readonly"] = True
             layer["featuretype"] = "bodenbedeckung_boflaeche"
@@ -259,7 +259,7 @@ class ComplexCheck(ComplexCheckBase):
             layer["style"] = "basis/BB.qml"
             vlayer = self.layer_loader.load(layer)
             layer = {}
-            layer["type"] = "postgres" 
+            layer["type"] = "postgres"
             layer["title"] = _translate("VeriSO_EE_basis","Objektname",None)
             layer["readonly"] = True
             layer["featuretype"] = "bodenbedeckung_objektnamepos_v"
@@ -279,10 +279,9 @@ class ComplexCheck(ComplexCheckBase):
 
 
 
-             
-        except Exception:
-            QApplication.restoreOverrideCursor()            
-            exc_type, exc_value, exc_traceback = sys.exc_info()
-            self.iface.messageBar().pushMessage("Error", str(traceback.format_exc(exc_traceback)), level=QgsMessageBar.CRITICAL, duration=5)                    
-        QApplication.restoreOverrideCursor()  
 
+        except Exception:
+            QApplication.restoreOverrideCursor()
+            exc_type, exc_value, exc_traceback = sys.exc_info()
+            self.iface.messageBar().pushMessage("Error", str(traceback.format_exc(exc_traceback)), level=QgsMessageBar.CRITICAL, duration=5)
+        QApplication.restoreOverrideCursor()

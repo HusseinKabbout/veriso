@@ -5,7 +5,7 @@ from builtins import range, str
 from qgis.PyQt.QtCore import QObject, QSettings, QSizeF, Qt
 from qgis.PyQt.QtGui import QColor, QTextDocument
 from qgis.PyQt.QtWidgets import QApplication
-from qgis.core import QgsFeature, QgsMapLayer, QgsMapLayerRegistry, QgsPoint, \
+from qgis.core import QgsFeature, QgsMapLayer, QgsProject, QgsPoint, \
     QgsProject, QgsRectangle
 from qgis.gui import QgsMessageBar, QgsTextAnnotationItem
 
@@ -408,7 +408,7 @@ class ComplexCheck(ComplexCheckBase):
     # (c) Carson Farmer / fTools
     @staticmethod
     def get_vector_layer_by_name(my_name):
-        layermap = QgsMapLayerRegistry.instance().mapLayers()
+        layermap = QgsProject.instance().mapLayers()
         for name, layer in list(layermap.items()):
             if layer.type() == QgsMapLayer.VectorLayer and layer.name() == \
                     my_name:

@@ -193,7 +193,7 @@ class ComplexCheck(ComplexCheckBase):
             return
 
             # Create excel file.
-        filename = QDir.convertSeparators(
+        filename = QDir.toNativeSeparators(
                 QDir.cleanPath(
                         os.path.join(self.project_dir, "lfp3_pro_ts.xlsx")))
         workbook = xlsxwriter.Workbook(filename)

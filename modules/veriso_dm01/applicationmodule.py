@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from __future__ import absolute_import, print_function
-
 from veriso.base.utils.utils import dynamic_import
 from veriso.modules.applicationmodule_base import ApplicationModuleBase
 
@@ -35,46 +33,46 @@ class ApplicationModule(ApplicationModuleBase):
                 'widget': 'TextEdit',
                 'alias': 'Bemekung:',
                 'config': {"IsMultiline": True}
-            },
+                },
             'datum': {'widget': 'Hidden'},
             'bemerkung_nfg': {
                 'widget': 'TextEdit',
                 'alias': 'Bemekung NFG:',
                 'config': {"IsMultiline": True},
                 'writable_only_by': ['geometerbuero']
-            },
+                },
             'forstorgan': {
                 'widget': 'Enumeration',
                 'alias': 'Forstorgan:',
                 'writable_only_by': ['forst']
-            },
+                },
             'bemerkung_forst': {
                 'widget': 'TextEdit',
                 'alias': 'Bemekung Forst:',
                 'config': {"IsMultiline": True},
                 'writable_only_by': ['forst']
-            },
+                },
             'verifikation': {
                 'widget': 'Enumeration',
                 'alias': 'Verifikation:',
                 'writable_only_by': ['verifikation']
-            },
+                },
             'bemerkung_verifikation': {
                 'widget': 'TextEdit',
                 'alias': 'Bemekung Verifikation:',
                 'config': {"IsMultiline": True},
                 'writable_only_by': ['verifikation']
-            },
+                },
             'erledigt': {
                 'widget': 'CheckBox',
                 'alias': 'Erledigt:',
                 'config': {
                     'CheckedState': 't',
                     'UncheckedState': 'f'
-                },
+                    },
                 'writable_only_by': ['geometerbuero']
+                }
             }
-        }
 
         d.layers['point']['fields'] = fields
         d.layers['line']['fields'] = fields
