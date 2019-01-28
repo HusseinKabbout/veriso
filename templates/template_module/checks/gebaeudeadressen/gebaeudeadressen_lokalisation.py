@@ -192,7 +192,7 @@ class ComplexCheck(ComplexCheckBase):
                                 "VeriSO_EE_Geb_LokTest",
                                 "Layer _LokalisationsName_ not found.",
                                 None),
-                        level=QgsMessageBar.CRITICAL,
+                        level=Qgis.Critical,
                         duration=0)
                 QApplication.restoreOverrideCursor()
                 return
@@ -320,7 +320,7 @@ class ComplexCheck(ComplexCheckBase):
                             _translate("VeriSO_EE_Geb_LokTest",
                                        "Field not found.",
                                        None),
-                            level=QgsMessageBar.CRITICAL,
+                            level=Qgis.Critical,
                             duration=0)
                     QApplication.restoreOverrideCursor()
                     return
@@ -399,7 +399,7 @@ class ComplexCheck(ComplexCheckBase):
             exc_type, exc_value, exc_traceback = sys.exc_info()
             self.message_bar.pushMessage("Error", str(
                     traceback.format_exc(exc_traceback)),
-                                         level=QgsMessageBar.CRITICAL,
+                                         level=Qgis.Critical,
                                          duration=0)
         QApplication.restoreOverrideCursor()
         QApplication.restoreOverrideCursor()

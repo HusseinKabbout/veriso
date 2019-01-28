@@ -39,5 +39,5 @@ class ComplexCheck(ComplexCheckBase):
         except Exception as e:
             exc_type, exc_value, exc_traceback = sys.exc_info()
             self.message_bar.pushMessage("Error", str(e),
-                                         level=QgsMessageBar.CRITICAL,
+                                         level=Qgis.Critical,
                                          duration=0)

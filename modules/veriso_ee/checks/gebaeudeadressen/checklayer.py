@@ -99,6 +99,6 @@ class ComplexCheck(ComplexCheckBase):
             exc_type, exc_value, exc_traceback = sys.exc_info()
             self.message_bar.pushMessage("Error", str(
                     traceback.format_exc(exc_traceback)),
-                                         level=QgsMessageBar.CRITICAL,
+                                         level=Qgis.Critical,
                                          duration=0)
         QApplication.restoreOverrideCursor()
